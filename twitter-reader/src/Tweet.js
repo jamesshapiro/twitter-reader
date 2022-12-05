@@ -4,14 +4,17 @@ const Tweet = ({
   username,
   userDisplayName,
   text,
-  date
+  timestamp
 }) => {
-  const relativeDate = (date) => {
+  const relativeDate = (timestamp) => {
+    // Convert the given date string to a Date object
+    const dateObj = new Date(timestamp)
+
     // Get the current date and time
     const now = new Date()
 
     // Calculate the difference between the given date and the current date
-    const diff = now - date
+    const diff = now - dateObj
 
     // Convert the difference to hours
     const hours = Math.floor(diff / (60 * 60 * 1000))
@@ -22,7 +25,7 @@ const Tweet = ({
     }
 
     // Otherwise, return the full date
-    return date.toDateString()
+    return dateObj.toDateString()
   }
   return (
     <div className="tweet" style={{ display: 'flex' }}>
@@ -36,7 +39,7 @@ const Tweet = ({
         <div className="tweet-header">
           <div className="tweet-username">
             <span className="display-name">{userDisplayName}</span> @{username}{' '}
-            · <span className="tweet-date">{relativeDate(date)}</span>
+            · <span className="tweet-date">{relativeDate(timestamp)}</span>
           </div>
         </div>
         <div className="tweet-text">{text}</div>
