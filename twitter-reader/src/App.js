@@ -47,7 +47,13 @@ const App = () => {
         <Tweet
           username="jamesshapiro"
           userDisplayName="James Shapiro"
-          text={quotedTweet}
+          text={
+            <>
+              Basic Quote Tweet example:
+              <br />
+              <br /> {quotedTweet}
+            </>
+          }
           timestamp="2022-12-05T01:00:00"
           likes="100,000"
           retweets="10,000"
